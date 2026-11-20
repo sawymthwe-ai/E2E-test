@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CareFlow DCM — Prototype v2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">DCM</div>
+      <div>
+        <h1>CareFlow Discharge Compliance Monitor</h1>
+        <p>Functional assessment prototype v2 · 14 synthetic patients · C1–C3 + S1–S6 safety holds</p>
+      </div>
+    </div>
+    <div class="header-controls">
+      <label class="role-picker">
+        <span>Acting role</span>
+        <select id="role-select">
+          <option value="Doctor">Doctor — Dr. Niamh O'Sullivan</option>
+          <option value="Nurse">Nurse — Aoife Kelly</option>
+          <option value="Pharmacist">Pharmacist — Ciarán Murphy</option>
+          <option value="Ordering Clinician">Ordering clinician — Dr. Liam Byrne</option>
+          <option value="Coding">Clinical documentation / coding</option>
+          <option value="Infection Prevention">Infection prevention</option>
+          <option value="Compliance">Compliance — read-only</option>
+        </select>
+      </label>
+      <button class="btn ghost light" id="reset-btn" type="button">Reset demo</button>
+    </div>
+  </header>
+
+  <div class="disclaimer">
+    <strong>Prototype only.</strong> Synthetic data, no real patients. Decision support — the system never auto-approves a discharge.
+  </div>
+
+  <main class="app-main">
+    <section class="kpis" id="kpis" aria-label="Discharge KPIs"></section>
+
+    <nav class="tabs" id="tabs" aria-label="Views">
+      <button class="tab active" type="button" data-tab="queue">My queue</button>
+      <button class="tab" type="button" data-tab="all">All discharges</button>
+      <button class="tab" type="button" data-tab="analytics">Analytics</button>
+      <button class="tab" type="button" data-tab="audit">Audit log</button>
+      <span class="tabs-note" id="queue-note"></span>
+    </nav>
+
+    <section class="workspace" id="workspace">
+      <aside class="record-list" id="record-list" aria-label="Patient records"></aside>
+      <section class="detail" id="detail" aria-label="Record detail"></section>
+    </section>
+
+    <section class="analytics-view" id="analytics-view" hidden aria-label="Analytics"></section>
+    <section class="audit-view" id="audit-view" hidden aria-label="Audit log"></section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
